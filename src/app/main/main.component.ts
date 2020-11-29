@@ -5,28 +5,20 @@ import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CustomMatPaginatorIntl } from './CustomPaginatorConfiguration';
-export interface UserData {
-  id: string;
+export interface minerincom {
   name: string;
-  progress: string;
-  color: string;
+  hashrate: number;
+  consumption: number;
+  incom:number;
 }
 
 /** Constants used to fill up our data base. */
-const COLORS: string[] = [
-  'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
-  'aqua', 'blue', 'navy', 'black', 'gray'
-];
-const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
 const MINERS=[
-  {name: "SJ9" , hashrate:14.5, consumption:1350},
-  {name: "SJ9" , hashrate:14.5, consumption:1350},
-  {name: "SJ9" , hashrate:14.5, consumption:1350},
-  {name: "SJ9" , hashrate:14.5, consumption:1350},
-  {name: "SJ9" , hashrate:14.5, consumption:1350}
+{name:"iBeLink BM-K1"		                          , hashrate:720  ,consumption:1300},
+{name:"Innosilicon A10 Pro+ ETHMiner (720Mh)"		  , hashrate:6600 ,consumption:2400},
+{name:"iBeLink BM-N1"		                          , hashrate:500	,consumption:750},
+{name:"Bitmain Antminer Z15"		                  , hashrate:485	,consumption:850},
+{name:"Innosilicon A10 ETHMaster (485Mh)"		      , hashrate:432	,consumption:740},
 ];
 const GENERATORS=[
   {name: "100KVA" ,generation:1350},
@@ -41,36 +33,35 @@ const GENERATORS=[
  ]
 })
 export class MainComponent implements OnInit {
+  static capacity=100000; //ضرفیت دیزل ژنراتور
+  doller=35000;// قیمت دلار
+  bitcoin=17518;//قیمت بیتکوین به دلار
+  btc=0.00000784;// پاداش استخراج بیتکوین
+
   
   generators=GENERATORS;
   miners=MINERS;
   signupForm: FormGroup;
   loading = false;
   submitted = false;
-  displayedColumns: string[] = ['id', 'name', 'progress', 'color'];
-  dataSource: MatTableDataSource<UserData>;
+  displayedColumns: string[] = [ 'name','hashrate','incom'];
+  dataSource: MatTableDataSource<minerincom>;
 
   
   @ViewChild(MatPaginator , {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(
-    private formBuilder: FormBuilder
-  ) {
-
-    
-    // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
-    
+  constructor(private formBuilder: FormBuilder){
+    const MinerIncoms=Array.from(MINERS, x => new miner(x,this.bitcoin))
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
+    this.dataSource = new MatTableDataSource(MinerIncoms);
   }
   
   ngOnInit(): void {
     
     this.signupForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      type: ['', Validators.required],
+      dollar: ['', Validators.required],
       address: [''],
       firstname: [''],
       lastname: [''],
@@ -96,17 +87,27 @@ export class MainComponent implements OnInit {
   }
 }
 
-/** Builds and returns a new User. */
-function createNewUser(id: number): UserData {
-  const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
+
+export class miner {
+  name: string;
+  hashrate: number;
+  consumption: number;
+
+  constructor(obj) {
+    Object.assign(this, obj);
+  }
+
+  get incom(): number {
+    return this.hashrate + this.consumption;
+  }
+  get dailyIncom(): number {
+    return this.hashrate *this.consumption*MainComponent.capacity;
+  }
+  get monthlyIncom(): number {
+    return 30*this.hashrate *this.consumption;
+  }
 }
+
 
 
