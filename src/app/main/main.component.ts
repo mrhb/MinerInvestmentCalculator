@@ -52,7 +52,7 @@ export class MainComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private formBuilder: FormBuilder){
-    const MinerIncoms=Array.from(MINERS, x => new miner(x,this.bitcoin))
+    const MinerIncoms=Array.from(MINERS, x => new miner(x))
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(MinerIncoms);
   }
