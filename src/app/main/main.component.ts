@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatIconRegistry } from '@angular/material/icon';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { CustomMatPaginatorIntl } from './CustomPaginatorConfiguration';
 export interface UserData {
   id: string;
   name: string;
@@ -34,9 +35,13 @@ const GENERATORS=[
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
+  providers: [
+   {provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl}
+ ]
 })
 export class MainComponent implements OnInit {
+  
   generators=GENERATORS;
   miners=MINERS;
   signupForm: FormGroup;
@@ -45,27 +50,34 @@ export class MainComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'progress', 'color'];
   dataSource: MatTableDataSource<UserData>;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  
+  @ViewChild(MatPaginator , {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
   constructor(
     private formBuilder: FormBuilder
   ) {
-     // Create 100 users
-     const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
 
-     // Assign the data to the data source for the table to render
-     this.dataSource = new MatTableDataSource(users);
-   }
-
+    
+    // Create 100 users
+    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
+    
+    // Assign the data to the data source for the table to render
+    this.dataSource = new MatTableDataSource(users);
+  }
+  
   ngOnInit(): void {
+    
     this.signupForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
       address: [''],
       firstname: [''],
       lastname: [''],
-
-  });
+    });
+    
+    // this.paginator._intl.itemsPerPageLabel="Test String";
+    this.paginator._intl=new CustomMatPaginatorIntl;
   }
   onSubmit()
   {}
