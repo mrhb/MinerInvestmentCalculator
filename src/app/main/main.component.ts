@@ -5,12 +5,7 @@ import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CustomMatPaginatorIntl } from './CustomPaginatorConfiguration';
-export interface minerincom {
-  name: string;
-  hashrate: number;
-  consumption: number;
-  incom:number;
-}
+
 
 /** Constants used to fill up our data base. */
 const MINERS=[
@@ -53,11 +48,11 @@ export class MainComponent implements OnInit {
   signupForm: FormGroup;
   loading = false;
   submitted = false;
-  displayedColumns: string[] = [ 'name','hashrate','incom'];
+  displayedColumns: string[] = [ 'name','hashrate','count','MonthlyIncom','MonthlyIncom_Toman'];
   dataSource: MatTableDataSource<minerincom>;
 
   
-  @ViewChild(MatPaginator , {static: true}) paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   MinerIncoms:minerincom[];
 
@@ -109,6 +104,7 @@ export class MainComponent implements OnInit {
     miner.btc=this.btc.value;
     this.MinerIncoms=Array.from(MINERS, x => new miner(x));
     this.dataSource = new MatTableDataSource(this.MinerIncoms);
+    this.ngAfterViewInit()
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -124,7 +120,14 @@ export class MainComponent implements OnInit {
     }
   }
 }
-  
+export interface minerincom {
+  name: string;
+  hashrate: number;
+  consumption: number;
+  count:number;
+  MonthlyIncom:number;
+  MonthlyIncom_Toman:number;
+}
   
   
   export class miner {
@@ -141,15 +144,23 @@ export class MainComponent implements OnInit {
   constructor(obj) {
     Object.assign(this, obj);
   }
-  
-  get incom(): number {
-    return this.monthlyIncom;
+
+  get UnitDailyIncom(): number {
+    return this.hashrate * miner.btc * miner.bitcoin;
   }
-  get dailyIncom(): number {
-    return this.hashrate *this.consumption* miner.capacity;
+  get UnitMonthlyIncom(): number {
+    return 30*this.UnitDailyIncom;
   }
-  get monthlyIncom(): number {
-    return 30*this.dailyIncom;
+
+  get count(): number {
+    var cnt= Math.floor(miner.capacity/this.consumption) 
+    return cnt ;
+  }
+  get MonthlyIncom(): number {
+    return this.UnitMonthlyIncom*this.count;
+  }
+  get MonthlyIncom_Toman(): number {
+    return this.MonthlyIncom* miner.dollar/1000;
   }
 }
 
