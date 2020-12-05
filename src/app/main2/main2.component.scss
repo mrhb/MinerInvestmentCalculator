@@ -13,17 +13,18 @@
     width: 50%;
     margin-bottom: 20px;
   }
-.mat-form-field
-{
-  margin-right: 10px;
-}
 
-  :host {
-     display:block;
-    justify-content: center;
-    align-items: center;
-    margin: 15px ;
+  .mat-form-field
+  {
+    margin-right: 10px;
   }
+
+:host {
+  display:block;
+  justify: center;
+  align-items: center;
+  margin: 15px ;
+}
 
   // mat-card-content {
   //   display: flex;

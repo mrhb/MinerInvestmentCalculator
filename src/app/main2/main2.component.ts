@@ -26,8 +26,8 @@ const MINERS=[
 ];
 
 const GENERATORS=[
-  {name: "100KVA" ,generation:100000,contPower:70 ,slCurrent:2},
-  {name: "200KVA" ,generation:200000,contPower:140, slCurrent:600},
+  {name: "100KVA" ,generation:100,contPower:70 ,slCurrent:2},
+  {name: "200KVA" ,generation:200,contPower:140, slCurrent:600},
 ];
 @Component({
   selector: 'app-main2',
@@ -41,6 +41,7 @@ export class Main2Component implements OnInit {
   generators=GENERATORS;
   miners=MINERS;
   signupForm: FormGroup;
+  currencyForm:FormGroup;
   // signupForm: FormGroup;
   loading = false;
   submitted = false;
@@ -68,10 +69,14 @@ export class Main2Component implements OnInit {
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
       generator:this.generator,
-      dollar:this.dollar,
+     
+      device:this.device
+    });
+
+    this.currencyForm=this.formBuilder.group({
+        dollar:this.dollar,
       bitcoin:this.bitcoin,
       btc:this.btc,
-      device:this.device
     });
     this.calcute();
     // this.paginator._intl.itemsPerPageLabel="Test String";
