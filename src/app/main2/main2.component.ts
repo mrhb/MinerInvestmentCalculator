@@ -4,6 +4,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { CurrenciesService, CURRENCY } from 'src/_services/currencies.service';
 
 
 /** Constants used to fill up our data base. */
@@ -26,8 +27,8 @@ const MINERS=[
 ];
 
 const GENERATORS=[
-  {name: "100KVA" ,generation:100,contPower:70 ,slCurrent:2},
-  {name: "200KVA" ,generation:200,contPower:140, slCurrent:600},
+  {name: "50KVA" ,generation:100,contPower:70 ,slCurrent:2},
+  {name: "250KVA" ,generation:200,contPower:140, slCurrent:600},
 ];
 @Component({
   selector: 'app-main2',
@@ -53,7 +54,10 @@ export class Main2Component implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   MinerIncoms:minerincom[];
 
-  constructor(private formBuilder: FormBuilder){
+  constructor(
+    private formBuilder: FormBuilder,
+    private Currencies: CurrenciesService
+     ){
     // Assign the data to the data source for the table to render
   }
   
@@ -61,23 +65,21 @@ export class Main2Component implements OnInit {
   dollar   =new FormControl(35750);// قیمت دلار
   bitcoin  =new FormControl(17518);//قیمت بیتکوین به دلار
   btc      =new FormControl(0.00000784);// پاداش استخراج بیتکوین
-
-
-  // device =new FormControl(this.miners[0]); //نوع ماینر
-  device =new FormControl(""); //نوع ماینر
+  device =new FormControl(this.miners[0]); //نوع ماینر
 
   ngOnInit(): void {
+    this.onReset();
     this.signupForm = this.formBuilder.group({
       generator:this.generator,
-     
       device:this.device
     });
 
     this.currencyForm=this.formBuilder.group({
-        dollar:this.dollar,
+      dollar:this.dollar,
       bitcoin:this.bitcoin,
       btc:this.btc,
     });
+    
     this.calcute();
     // this.paginator._intl.itemsPerPageLabel="Test String";
   //  this.paginator._intl=new CustomMatPaginatorIntl;
@@ -93,11 +95,32 @@ export class Main2Component implements OnInit {
   }
   onReset()
   {
-    this.generator =new FormControl(this.generators[0]); //ظرفیت دیزل ژنراتور
-    this.dollar   =new FormControl(35750);// قیمت دلار
-    this.bitcoin  =new FormControl(17518);//قیمت بیتکوین به دلار
-    this.btc      =new FormControl(0.00000784);// پاداش استخراج بیتکوین
 
+    this.Currencies.getInfo("BTC").subscribe(
+      data => {
+      console.log(data);
+      var reward=data[0].reward_block;
+        var hashrate=data[0].network_hashrate;
+        var coeff=144000000000000*100000000;
+      var temp=Math.floor(coeff*reward/hashrate)/100000000;
+      this.btc.setValue(temp);//      =new FormControl(temp);// پاداش استخراج بیتکوین
+      
+      this.bitcoin.setValue(Math.floor(data[0].price*100)/100);//قیمت بیتکوین به دلار
+    });
+
+
+    this.Currencies.getDoller().subscribe(
+      data => {
+      console.log(data);
+      var temp=data.list[0].price;;
+     
+      this.dollar=new FormControl(temp);// پاداش استخراج بیتکوین
+
+    });
+
+    this.generator.setValue(this.generators[0]); //ظرفیت دیزل ژنراتور
+
+   
       this.calcute();
     
   }
@@ -126,6 +149,7 @@ export class Main2Component implements OnInit {
     }
   }
 }
+
 export interface minerincom {
   name: string;
   hashrate: number;
@@ -134,8 +158,7 @@ export interface minerincom {
   MonthlyIncom:number;
   MonthlyIncom_Toman:number;
 }
-  
-  
+
   export class miner {
     static dollar;
     static capacity;
