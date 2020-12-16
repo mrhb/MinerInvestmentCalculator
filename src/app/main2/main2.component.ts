@@ -112,8 +112,9 @@ export class Main2Component implements OnInit {
     this.Currencies.getDoller().subscribe(
       data => {
       console.log(data);
-      var temp=data.list[0].price;;
-     
+      //var temp=data.list[0].price;;
+      var x=data[29].price;
+      var temp=parseFloat(x.replace(",","."))*100;
       this.dollar=new FormControl(temp);// پاداش استخراج بیتکوین
 
     });

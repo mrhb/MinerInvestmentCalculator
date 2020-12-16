@@ -23,7 +23,8 @@ getInfo(currencyName:string): Observable<[CURRENCY]> {
     return this.http.get<[CURRENCY]>(`https://api.minerstat.com/v2/coins?list=${currencyName}`);
   }
 getDoller(): Observable<any> {
-  return this.http.get(this.dollarAPI);
+  return this.http.get(`https://cors-anywhere.herokuapp.com/https://api.codebazan.ir/arz/?type=arz`);
+  // return this.http.get(`https://cors-anywhere.herokuapp.com/`+this.dollarAPI);
   }
 }
 
