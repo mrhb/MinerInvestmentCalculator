@@ -4,8 +4,6 @@
 
 export const environment = {
   production: false,
-  dollarAPI:"https://hamyarandroid.com/api/api?t=currency"
-
 };
 
 /*

@@ -23,16 +23,13 @@ module.exports = __webpack_require__(/*! C:\MinerInvestmentCalculator\calculator
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CurrenciesService", function() { return CurrenciesService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/environments/environment */ "AytR");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
-
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
 
 
 
 class CurrenciesService {
     constructor(http) {
         this.http = http;
-        this.dollarAPI = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].dollarAPI;
     }
     // options: {
     //   headers?: HttpHeaders | {[header: string]: string | string[]},
@@ -50,14 +47,14 @@ class CurrenciesService {
         // return this.http.get(`https://cors-anywhere.herokuapp.com/`+this.dollarAPI);
     }
 }
-CurrenciesService.ɵfac = function CurrenciesService_Factory(t) { return new (t || CurrenciesService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"])); };
+CurrenciesService.ɵfac = function CurrenciesService_Factory(t) { return new (t || CurrenciesService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
 CurrenciesService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: CurrenciesService, factory: CurrenciesService.ɵfac, providedIn: 'root' });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CurrenciesService, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
         args: [{
                 providedIn: 'root'
             }]
-    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }]; }, null); })();
+    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }]; }, null); })();
 
 
 /***/ }),
@@ -77,7 +74,6 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 const environment = {
     production: false,
-    dollarAPI: "https://hamyarandroid.com/api/api?t=currency"
 };
 /*
  * For easier debugging in development mode, you can import the following file
