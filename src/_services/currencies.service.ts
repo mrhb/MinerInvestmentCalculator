@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurrenciesService {
-
+dollarAPI=environment.dollarAPI;
   constructor(private http:HttpClient) { 
 }
 // options: {
@@ -22,7 +23,7 @@ getInfo(currencyName:string): Observable<[CURRENCY]> {
     return this.http.get<[CURRENCY]>(`https://api.minerstat.com/v2/coins?list=${currencyName}`);
   }
 getDoller(): Observable<any> {
-  return this.http.get(`api/api?t=currency`);
+  return this.http.get(this.dollarAPI);
   }
 }
 

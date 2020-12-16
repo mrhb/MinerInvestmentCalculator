@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  dollarAPI:"https://hamyarandroid.com/api?t=currency"
 };
