@@ -1,13 +1,20 @@
+
 <mat-card class="my-card"   dir="rtl">
   <mat-card-title>
-    اطلاعات ارز
+    اطلاعات ارز    
   </mat-card-title>
   <form [formGroup]="currencyForm"  dir="rtl">
-        <mat-card-content class="Input-form" >
+    <mat-card-content class="Input-form" >
       <mat-form-field appearance="fill"  class="full-width"  >
-          <mat-label>قیمت دلار</mat-label>
-          <input matInput type="number"  [formControl]="dollar"  class="example-right-align">
-          <span matPrefix>&nbsp; تومان&nbsp; </span>
+        
+        <mat-label>
+          قیمت دلار
+        </mat-label>
+        <input matInput type="number"  [formControl]="dollar"  class="example-right-align">
+        <mat-icon  matPrefix svgIcon="btc"></mat-icon>
+        <span matPrefix>
+          &nbsp; تومان&nbsp; 
+        </span>
       </mat-form-field>
 
       <mat-form-field appearance="fill"   class="full-width"  >

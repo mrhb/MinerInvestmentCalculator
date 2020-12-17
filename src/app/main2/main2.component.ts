@@ -4,7 +4,9 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { DomSanitizer } from '@angular/platform-browser';
 import { CurrenciesService, CURRENCY } from 'src/_services/currencies.service';
+import { IconService } from 'src/_services/icon.service';
 
 
 /** Constants used to fill up our data base. */
@@ -56,18 +58,26 @@ export class Main2Component implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private Currencies: CurrenciesService
-     ){
-    // Assign the data to the data source for the table to render
-  }
+    private Currencies: CurrenciesService,
+    private matIconRegistry: MatIconRegistry,
+    private domSanitizer: DomSanitizer,
+    private iconService: IconService
+    ){
+      this.iconService.registerIcons();
+      // this.matIconRegistry.addSvgIcon(
+      //   'btc',
+      //   this.domSanitizer.bypassSecurityTrustResourceUrl('assets/cryptocurrency-icons/svg/color/btc.svg')
+      // );
+      }
   
   generator =new FormControl(this.generators[0]); //ظرفیت دیزل ژنراتور
-  dollar   =new FormControl(35750);// قیمت دلار
+  dollar   =new FormControl(26000);// قیمت دلار
   bitcoin  =new FormControl(17518);//قیمت بیتکوین به دلار
   btc      =new FormControl(0.00000784);// پاداش استخراج بیتکوین
   device =new FormControl(this.miners[0]); //نوع ماینر
 
   ngOnInit(): void {
+
     this.onReset();
     this.signupForm = this.formBuilder.group({
       generator:this.generator,
@@ -115,7 +125,7 @@ export class Main2Component implements OnInit {
       //var temp=data.list[0].price;;
       var x=data[29].price;
       var temp=parseFloat(x.replace(",","."))*100;
-      this.dollar=new FormControl(temp);// پاداش استخراج بیتکوین
+      this.dollar=new FormControl(Math.floor(temp));// پاداش استخراج بیتکوین
 
     });
 
