@@ -7,12 +7,12 @@
          url('assets/fonts/woff/IRANSansWeb.woff') format('woff'), /* Pretty Modern Browsers */
          url('assets/fonts/ttf/IRANSansWeb.ttf')  format('truetype'), /* Safari, Android, iOS */
 }
-html, body { height: 100%; }
+html, body { height: 100%;
+}
 body { 
   margin: 0; 
-  // font-family:MyFontName, Roboto, "Helvetica Neue", sans-serif;
 }
-* {
+*{
   font-family:MyFontName, Roboto, "Helvetica Neue", sans-serif;
     direction: rtl;
   }

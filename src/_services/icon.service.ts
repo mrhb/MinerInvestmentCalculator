@@ -16,13 +16,13 @@ export class IconService {
   ) { }
 
   public registerIcons(): void {
-    this.loadIcons(Object.values(["BTC"]), this.modulePath);
+    this.loadIcons(Object.values(["btc","usd"]), this.modulePath);
   }
 
   private loadIcons(iconKeys, iconUrl: string): void {
     iconKeys.forEach(key => {
-     var  path=`${iconUrl}/btc.svg`;
-      this.matIconRegistry.addSvgIcon('btc', this.domSanitizer.bypassSecurityTrustResourceUrl(path));
+     var  path=`${iconUrl}/${key}.svg`;
+      this.matIconRegistry.addSvgIcon(key, this.domSanitizer.bypassSecurityTrustResourceUrl(path));
     });
   }
 }

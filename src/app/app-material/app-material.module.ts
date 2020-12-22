@@ -27,6 +27,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTreeModule } from '@angular/material/tree';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
   const materialModules = [
     CdkTreeModule,
@@ -56,7 +57,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatTreeModule,
     OverlayModule,
     PortalModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexLayoutModule,
+
   ];
   
   @NgModule({

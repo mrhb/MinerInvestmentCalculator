@@ -4,22 +4,41 @@ body{
 .Input-form{
   display: flex;
 }
+
+
+::ng-deep .mat-select-value-text {
+  color:#832ab7;
+  font-size: x-large;
+  font-weight: bold;
+}
 .my-form{
     min-width: 75px;
     max-width: 500px;
     width: 100%;
   }
 
+  mat-card-title  {
+    align-items: center;
+    display: flex;
+  }
 .mat-icon {
-  transform: scale(0.5);
+  transform: scale(1);
   width: 32px;
   height: 32px;
 }
-   p{
-  padding-top: 10px;
-  }
+
   .full-width {
     width: 100%;
+  }
+  .half-width {
+    width: 35%;
+  }
+  .dollar{
+    padding-top: 10px;
+    font-family: arial;
+    font-size: 24px;
+    color: #0cb983;
+    font-weight: bold;
   }
   .my-card{
     width: 50%;
