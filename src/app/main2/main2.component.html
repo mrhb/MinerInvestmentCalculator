@@ -1,116 +1,68 @@
 <form fxLayout="column" fxLayoutAlign="center center" [formGroup]="signupForm"  dir="rtl">
-  
-  <mat-form-field fxFlex class="slectedValue half-width"  dir="rtl" >
-        <mat-label  >انتخاب دستگاه</mat-label>
-        <mat-select  type="number" [formControl]="device"   dir="rtl">
-          <mat-option class="not-empty-select" *ngFor="let miner of miners"  type="number"  [value]="miner" >{{miner.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      
-      <mat-form-field fxFlex class="half-width"  dir="rtl" >
-        <mat-label  >انتخاب موتور-ژنراتور</mat-label>
-        <mat-select  type="number" [formControl]="generator"   dir="rtl">
-          <mat-option *ngFor="let gen of generators"  type="number"  [value]="gen" >{{gen.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      
-      <mat-card style="width: 25%;">
-        <mat-card-title  fxLayout="column" fxLayoutAlign="space-around center">
-          درآمد ماهانه 
-        </mat-card-title>
-        <mat-card-content  fxLayout="column" fxLayoutAlign="space-around center">
-          <ng-container  *ngIf="{ count:1000*generator.value.contPower/device.value.consumption | number:'1.0-0' } as variable">
-            <p class="dollar">{{variable.count*30*device.value.hashrate*bitcoin.value*btc.value*dollar.value | currency :'IRR':''}} $</p>
-            <p >{{variable.count*30*device.value.hashrate*bitcoin.value*btc.value*dollar.value | currency :'IRR':''}} تومان</p>
-          </ng-container> 
-        </mat-card-content>
-      </mat-card>
-      
-      <mat-card style="width: 25%;">
-        <mat-card-content>
-          <ng-container  *ngIf="{ count:1000*generator.value.contPower/device.value.consumption | number:'1.0-0' } as variable">
-              <p fxFlexAlign="start">توان دائم کار: {{generator.value.contPower}}کیلووات</p> 
-              <p fxFlexAlign="start">جریان تکفاز: {{generator.value.slCurrent}}آمپر</p> 
-              <p fxFlexAlign="start">تعداد دستگاه ها:{{variable.count}}</p>
-              <p fxFlexAlign="start">تراهش: {{device.value.hashrate}}Th/s</p> 
-              <p fxFlexAlign="start"> مصرف: {{device.value.consumption}}w</p> 
-              <!-- <mat-divider></mat-divider> -->
-              <p fxFlexAlign="start">درآمدزایی ماهانه(تومان): {{30*device.value.hashrate*bitcoin.value*btc.value*dollar.value | currency :'IRR':''}}</p>
-            </ng-container> 
-          </mat-card-content>
-        </mat-card>
-        <mat-card style="width: 25%;">
-          <mat-card-title  fxLayout="column" fxLayoutAlign="space-around center">
-            قیمت فعلی BTC
-          </mat-card-title>
-          <mat-card-content  fxLayout="column" fxLayoutAlign="space-around center">
-            <ng-container  *ngIf="{ count:1000*generator.value.contPower/device.value.consumption | number:'1.0-0' } as variable">
-              <p class="dollar">{{bitcoin.value }} $</p>
-              <p >{{bitcoin.value*dollar.value | currency :'IRR':''}} تومان</p>
-        </ng-container> 
-       </mat-card-content>
-      </mat-card>
-      
-      <mat-card class="my-card"   dir="rtl">
-        <mat-card-title>
-    <mat-icon  matPrefix svgIcon="usd"></mat-icon> &nbsp;
-    اطلاعات ارز    
-  </mat-card-title>
-  <mat-card-content class="Input-form" >
-    <P> پاداش استخراج: {{btc.value}}</P>
-    
-      </mat-card-content >
-      <mat-card-actions>
-        <button mat-button  [disabled]="loading" (click)="onReset()" color="primary"> بازنشانی</button>
-      </mat-card-actions>
-    </mat-card>
-  </form>
-
-
-  
-    <!-- <mat-card dir="rtl" class="my-card">
-      <mat-card-title>
-         ماینر
-      </mat-card-title>
-      <mat-card-content >
-        <form [formGroup]="signupForm" class="my-form" dir="rtl">
-
-        <mat-form-field  class="full-width"  dir="rtl" >
-          <mat-label  >انتخاب دستگاه</mat-label>
-          <mat-select  type="number" [(formControl)]="device"   dir="rtl">
-            <mat-option *ngFor="let miner of miners"  type="number"  [value]="miner" >{{miner.name}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        </form>
-        <p>تراهش: {{device.value.hashrate}}Th/s &nbsp;&nbsp;&nbsp; مصرف: {{device.value.consumption}}w</p> 
-        <mat-divider></mat-divider>
-        <p>درآمدزایی ماهانه(تومان): {{30*device.value.hashrate*bitcoin.value*btc.value*dollar.value | currency :'IRR':''}}</p>
-      </mat-card-content>
-    </mat-card> -->
-
-    <!-- <mat-card dir="rtl" class="my-card">
-      <mat-card-title>
-         موتور-ژنراتور
-      </mat-card-title>
-      <mat-card-content >
-        <form [formGroup]="signupForm" class="my-form" dir="rtl">
-
-        <mat-form-field  class="full-width"  dir="rtl" >
-          <mat-label  >انتخاب موتور-ژنراتور</mat-label>
-          <mat-select  type="number" [formControl]="generator"   dir="rtl">
-            <mat-option *ngFor="let gen of generators"  type="number"  [value]="gen" >{{gen.name}}</mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        </form>
-
-        <ng-container *ngIf="{ count:1000*generator.value.contPower/device.value.consumption | number:'1.0-0' } as variable">
-          <p>توان دائم کار: {{generator.value.contPower}}کیلووات&nbsp;&nbsp;جریان تکفاز: {{generator.value.slCurrent}}آمپر</p> 
-          <mat-divider></mat-divider>
-          <p>تعداد دستگاه ها:{{variable.count}}</p>
-          <p>درآمد ماهانه دستگاه ها(تومان): {{variable.count*30*device.value.hashrate*bitcoin.value*btc.value*dollar.value | currency :'IRR':''}}</p>
-          <p>درآمد ماهانه دستگاه ها($): {{variable.count*30*device.value.hashrate*bitcoin.value*btc.value| currency :'IRR':''}}</p>
-        </ng-container>
-      </mat-card-content>
-    </mat-card> -->
+  <!-- miner Selection -->
+  <mat-form-field fxFlex class="slectedValue full-width"  dir="rtl" >
+    <mat-label  >انتخاب دستگاه</mat-label>
+    <mat-select  type="number" [formControl]="device"   dir="rtl">
+      <mat-option class="not-empty-select" *ngFor="let miner of miners"  type="number"  [value]="miner" >{{miner.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+   <!-- motor Selection    -->
+  <mat-form-field fxFlex class="full-width"  dir="rtl" >
+    <mat-label  >انتخاب موتور-ژنراتور</mat-label>
+    <mat-select  type="number" [formControl]="generator"   dir="rtl">
+      <mat-option *ngFor="let gen of generators"  type="number"  [value]="gen" >{{gen.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <!-- incom -->
+  <mat-card style="width: 25%;">
+    <mat-card-title  fxLayout="column" fxLayoutAlign="space-around center">
+      درآمد ماهانه 
+    </mat-card-title>
+    <mat-card-content  fxLayout="column" fxLayoutAlign="space-around center">
+      <ng-container  *ngIf="{ count:1000*generator.value.contPower/device.value.consumption | number:'1.0-0' } as variable">
+        <p class="dollar">{{variable.count*30*device.value.hashrate*bitcoin.value*btc.value*dollar.value | currency :'IRR':''}} $</p>
+        <p >{{variable.count*30*device.value.hashrate*bitcoin.value*btc.value*dollar.value | currency :'IRR':''}} تومان</p>
+      </ng-container> 
+    </mat-card-content>
+  </mat-card>
+  <!-- incom details   -->
+  <mat-card style="width: 25%;">
+    <mat-card-content>
+      <ng-container  *ngIf="{ count:1000*generator.value.contPower/device.value.consumption | number:'1.0-0' } as variable">
+        <p fxFlexAlign="start">توان دائم کار: {{generator.value.contPower}}کیلووات</p> 
+        <p fxFlexAlign="start">جریان تکفاز: {{generator.value.slCurrent}}آمپر</p> 
+        <p fxFlexAlign="start">تعداد دستگاه ها:{{variable.count}}</p>
+        <p fxFlexAlign="start">تراهش: {{device.value.hashrate}}Th/s</p> 
+        <p fxFlexAlign="start"> مصرف: {{device.value.consumption}}w</p> 
+        <!-- <mat-divider></mat-divider> -->
+        <p fxFlexAlign="start">درآمدزایی ماهانه(تومان): {{30*device.value.hashrate*bitcoin.value*btc.value*dollar.value | currency :'IRR':''}}</p>
+      </ng-container> 
+    </mat-card-content>
+  </mat-card>
+  <!-- cryproCurrency Info -->
+  <mat-card style="width: 25%;">
+    <mat-card-title  fxLayout="column" fxLayoutAlign="space-around center">
+      قیمت فعلی BTC
+    </mat-card-title>
+    <mat-card-content  fxLayout="column" fxLayoutAlign="space-around center">
+      <ng-container  *ngIf="{ count:1000*generator.value.contPower/device.value.consumption | number:'1.0-0' } as variable">
+        <p class="dollar">{{bitcoin.value }} $</p>
+        <p >{{bitcoin.value*dollar.value | currency :'IRR':''}} تومان</p>
+      </ng-container> 
+    </mat-card-content>
+  </mat-card>
+  <!-- Detail Information    -->
+  <mat-card class="my-card"   dir="rtl">
+    <mat-card-title>
+      <mat-icon  matPrefix svgIcon="usd">
+      </mat-icon>
+       &nbsp;اطلاعات ارز    
+    </mat-card-title>
+    <mat-card-content class="Input-form" >
+      <P> پاداش استخراج: {{btc.value}}</P>
+    </mat-card-content >
+    <mat-card-actions>
+      <button mat-button  [disabled]="loading" (click)="onReset()" color="primary"> بازنشانی</button>
+    </mat-card-actions>
+</mat-card>
+</form>
