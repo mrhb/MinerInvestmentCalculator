@@ -1,20 +1,17 @@
-body{
-  display: flex;
-}
-.Input-form{
-  display: flex;
-}
 form {
-  margin-right:250px; 
-  margin-left:250px;
+  margin: 15px;
   padding:20px;
-  border-radius: 5%;
-  background-color: rgb(192, 192, 192);
+  background-color: rgb(177, 177, 177);
 }
-
+.inputs{
+  padding:20px;
+}
+.full-width{
+  width: 100%;
+}
 ::ng-deep .mat-select-value-text {
   color:#832ab7;
-  font-size: x-large;
+  font-size: 18px;
   font-weight: bold;
 }
 mat-card-title  {
@@ -27,23 +24,13 @@ mat-card-title  {
   height: 32px;
 }
 
-.full-width {
-  width: 100%;
-}
+// .full-width {
+//   width: 100%;
+// }
 .dollar{
   padding-top: 10px;
   font-family: arial;
-  font-size: 24px;
+  font-size: 17px;
   color: #0cb983;
   font-weight: bold;
-
-  animation: counter 5s linear infinite alternate;
-
-}
-.my-card{
-  width: 50%;
-  margin-bottom: 20px;
-}
-:host {
-  margin: 15px ;
 }
