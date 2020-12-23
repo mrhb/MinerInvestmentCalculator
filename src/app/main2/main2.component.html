@@ -25,7 +25,7 @@
       </mat-card-title>
       <mat-card-content  fxLayout="column" fxLayoutAlign="space-around center">
         <ng-container  *ngIf="{ count:1000*generator.value.contPower/device.value.consumption | number:'1.0-0' } as variable">
-          <p class="dollar">{{variable.count*30*device.value.hashrate*bitcoin.value*btc.value*dollar.value | currency :'IRR':''}} $</p>
+          <p class="dollar">{{variable.count*30*device.value.hashrate*bitcoin.value*btc.value | currency :'IRR':''}} $</p>
           <p >{{variable.count*30*device.value.hashrate*bitcoin.value*btc.value*dollar.value | currency :'IRR':''}} تومان</p>
         </ng-container> 
       </mat-card-content>

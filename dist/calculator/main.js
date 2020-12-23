@@ -232,7 +232,7 @@ function Main2Component_ng_container_19_Template(rf, ctx) { if (rf & 1) {
     const variable_r7 = ctx.ngIf;
     const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind3"](3, 2, variable_r7.count * 30 * ctx_r2.device.value.hashrate * ctx_r2.bitcoin.value * ctx_r2.btc.value * ctx_r2.dollar.value, "IRR", ""), " $");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind3"](3, 2, variable_r7.count * 30 * ctx_r2.device.value.hashrate * ctx_r2.bitcoin.value * ctx_r2.btc.value, "IRR", ""), " $");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind3"](6, 6, variable_r7.count * 30 * ctx_r2.device.value.hashrate * ctx_r2.bitcoin.value * ctx_r2.btc.value * ctx_r2.dollar.value, "IRR", ""), " \u062A\u0648\u0645\u0627\u0646");
 } }
@@ -311,8 +311,9 @@ const MINERS = [
     { name: "A1", hashrate: 49, consumption: 5400 },
 ];
 const GENERATORS = [
-    { name: "50KVA", generation: 100, contPower: 70, slCurrent: 2 },
-    { name: "250KVA", generation: 200, contPower: 140, slCurrent: 600 },
+    { name: "50KVA", generation: 40, contPower: 30, slCurrent: 2 },
+    { name: "80KVA", generation: 64, contPower: 48, slCurrent: 2 },
+    { name: "250KVA", generation: 200, contPower: 150, slCurrent: 600 },
 ];
 class Main2Component {
     constructor(formBuilder, Currencies, matIconRegistry, domSanitizer, iconService) {
