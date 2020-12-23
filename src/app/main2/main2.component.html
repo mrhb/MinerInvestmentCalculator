@@ -40,7 +40,7 @@
         <p fxFlexAlign="start">تعداد دستگاه ها:{{variable.count}}</p>
         <p fxFlexAlign="start">تراهش: {{device.value.hashrate}}Th/s</p> 
         <p fxFlexAlign="start"> مصرف: {{device.value.consumption}}w</p> 
-        <p fxFlexAlign="start">درآمدزایی ماهانه(تومان): {{30*device.value.hashrate*bitcoin.value*btc.value*dollar.value | currency :'IRR':''}}</p>
+        <p fxFlexAlign="start">درآمدزایی ماهانه یک دستگاه(تومان): {{30*device.value.hashrate*bitcoin.value*btc.value*dollar.value | currency :'IRR':''}}</p>
       </ng-container> 
     </div>
     
@@ -69,7 +69,8 @@
       &nbsp;اطلاعات ارز    
     </mat-card-title>
     <mat-card-content class="Input-form" >
-      <P> پاداش استخراج: {{btc.value}}</P>
+      <P> قیمت روز دلار: {{dollar.value }} (تومان)</P>
+      <P> پاداش استخراج: {{btc.value}} (btc)</P>
     </mat-card-content >
     <mat-card-actions>
       <button mat-button  [disabled]="loading" (click)="onReset()" color="primary"> بازنشانی</button>
