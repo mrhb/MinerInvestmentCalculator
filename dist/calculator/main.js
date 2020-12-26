@@ -223,7 +223,7 @@ function Main2Component_ng_container_19_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](3, "currency");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "p", 23);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](6, "currency");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -238,22 +238,22 @@ function Main2Component_ng_container_19_Template(rf, ctx) { if (rf & 1) {
 } }
 function Main2Component_ng_container_24_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p", 24);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "p", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "p", 24);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "p", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "p", 24);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "p", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "p", 24);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "p", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "p", 24);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "p", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "p", 24);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](13, "currency");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -294,16 +294,38 @@ function Main2Component_ng_container_31_Template(rf, ctx) { if (rf & 1) {
 const _c0 = function (a0) { return { count: a0 }; };
 /** Constants used to fill up our data base. */
 const MINERS = [
+    { name: "S9j", hashrate: 14.5, consumption: 1350 },
+    { name: "S9i", hashrate: 13, consumption: 1280 },
+    { name: "S9i(14)", hashrate: 14, consumption: 1320 },
+    { name: "S9", hashrate: 12.5, consumption: 1225 },
+    { name: "S9Hydro", hashrate: 18, consumption: 1728 },
+    { name: "M3", hashrate: 12, consumption: 2000 },
+    { name: "M3v2", hashrate: 12, consumption: 2000 },
+    { name: "M3X ", hashrate: 12.5, consumption: 2050 },
+    { name: "S11 ", hashrate: 20.5, consumption: 1530 },
+    { name: "S15 ", hashrate: 28, consumption: 1596 },
+    { name: "S17 ", hashrate: 56, consumption: 2520 },
+    { name: "S17Pro", hashrate: 53, consumption: 2094 },
+    { name: "S17", hashrate: 73, consumption: 2920 },
+    { name: "S17e", hashrate: 64, consumption: 2880 },
+    { name: "A1", hashrate: 49, consumption: 5400 },
+    { name: "Avalon 1047", hashrate: 37, consumption: 2380 },
+    { name: "Avalon 1066", hashrate: 50, consumption: 3250 },
+    { name: "Avalan 821", hashrate: 11.5, consumption: 1200 },
+    { name: "Avalan 841", hashrate: 13.6, consumption: 1290 },
+    { name: "Avalan 921", hashrate: 20, consumption: 1700 },
+    { name: "T17", hashrate: 40, consumption: 2200 },
+    { name: "T17+", hashrate: 64, consumption: 3200 },
+    { name: "T17e", hashrate: 53, consumption: 2915 },
+    { name: "T9", hashrate: 12.5, consumption: 1576 },
+    { name: "T9+", hashrate: 10.5, consumption: 1432 },
+    { name: "M20", hashrate: 68, consumption: 3312 },
     { name: "S19", hashrate: 110, consumption: 3250 },
-    { name: "S17+", hashrate: 73, consumption: 2920 },
     { name: "M20s", hashrate: 68, consumption: 3360 },
     { name: "M32", hashrate: 62, consumption: 3348 },
     { name: "M21s", hashrate: 56, consumption: 3360 },
     { name: "T3+", hashrate: 52, consumption: 2100 },
     { name: "T2T", hashrate: 30, consumption: 2200 },
-    { name: "S11", hashrate: 20.5, consumption: 1530 },
-    { name: "S9j", hashrate: 14.5, consumption: 1350 },
-    { name: "M3v2", hashrate: 12, consumption: 2000 },
     { name: "S15", hashrate: 28, consumption: 1596 },
     { name: "A1", hashrate: 49, consumption: 5400 },
 ];
@@ -408,7 +430,7 @@ Main2Component.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCom
         let _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.paginator = _t.first);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.sort = _t.first);
-    } }, decls: 45, vars: 26, consts: [["fxLayout", "column", "fxLayoutAlign", "center center", "dir", "rtl", 3, "formGroup"], [2, "background-color", "rgb(255, 255, 255)", "border-radius", "5%"], ["fxLayout", "column", "fxLayoutAlign", "center center", 1, "inputs", 2, "width", "400px"], ["fxFlex", "", "dir", "rtl", 1, "slectedValue", "full-width"], ["type", "number", "dir", "rtl", 3, "formControl"], ["class", "not-empty-select", "type", "number", 3, "value", 4, "ngFor", "ngForOf"], ["fxFlex", "", "dir", "rtl", 1, "full-width"], ["type", "number", 3, "value", 4, "ngFor", "ngForOf"], ["fxLayout", "column", "fxLayoutAlign", "center center", 1, "inputs"], ["fxLayout", "row", "fxLayoutGap", "2px"], ["fxFlex", "35"], ["fxLayoutAlign", "space-around center"], ["fxLayout", "column", "fxLayoutAlign", "space-around center"], [4, "ngIf"], ["fxFlex", "60"], ["fxLayout", "row", "fxLayoutGap", "2px", 2, "padding-top", "2px"], ["fxFlex", "60", "dir", "rtl"], ["matPrefix", "", "svgIcon", "usd"], [1, "Input-form"], ["mat-button", "", "color", "primary", 3, "disabled", "click"], ["type", "number", 1, "not-empty-select", 3, "value"], ["type", "number", 3, "value"], [1, "dollar"], ["fxFlexAlign", "start"]], template: function Main2Component_Template(rf, ctx) { if (rf & 1) {
+    } }, decls: 45, vars: 26, consts: [["fxLayout", "column", "fxLayoutAlign", "center center", "dir", "rtl", 3, "formGroup"], [2, "background-color", "rgb(255, 255, 255)", "border-radius", "5%"], ["fxLayout", "column", "fxLayoutAlign", "center center", 1, "inputs", 2, "width", "400px"], ["fxFlex", "", "dir", "rtl", 1, "slectedValue", "full-width"], ["type", "number", "dir", "rtl", 3, "formControl"], ["class", "not-empty-select", "type", "number", 3, "value", 4, "ngFor", "ngForOf"], ["fxFlex", "", "dir", "rtl", 1, "full-width"], ["type", "number", 3, "value", 4, "ngFor", "ngForOf"], ["fxLayout", "column", "fxLayoutAlign", "center center", 1, "inputs"], ["fxLayout", "row", "fxLayoutGap", "2px"], ["fxFlex", "35"], ["fxLayoutAlign", "space-around center"], ["fxLayout", "column", "fxLayoutAlign", "space-around center"], [4, "ngIf"], ["fxFlex", "60"], ["fxLayout", "row", "fxLayoutGap", "2px", 2, "padding-top", "2px"], ["fxFlex", "60", "dir", "rtl"], ["matPrefix", "", "svgIcon", "usd"], [1, "Input-form"], ["mat-button", "", "color", "primary", 3, "disabled", "click"], ["type", "number", 1, "not-empty-select", 3, "value"], ["type", "number", 3, "value"], [1, "dollar"], [2, "text-shadow", "2px 2px 4px #e98d03", "font-weight", "bolder"], ["fxFlexAlign", "start"]], template: function Main2Component_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "form", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
