@@ -49,8 +49,8 @@ const MINERS=[
 
 const GENERATORS=[
   {name: "250KVA" ,generation:200,contPower:140, slCurrent:600},
-  {name: "50KVA" ,generation:40,contPower:40 ,slCurrent:2},
-  {name: "80KVA" ,generation:64,contPower:48 ,slCurrent:2},
+  {name: "50KVA" ,generation:50,contPower:30 ,slCurrent:2},
+  {name: "70KVA" ,generation:70,contPower:40 ,slCurrent:2},
 ];
 @Component({
   selector: 'app-main2',
